@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios y precios | Majestic Barber Burgos</title>
+<meta name="description" content="Servicios y precios de Majestic Barber en Burgos: corte (15€), corte + barba (20€) y servicio completo (23€). Reserva por WhatsApp o llámanos al 642 65 96 21.">
+<meta name="theme-color" content="#F8F4EC">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxNCIgZmlsbD0iIzI0MUMxNCIvPgogIDxyZWN0IHg9IjQiIHk9IjQiIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgcng9IjExIiBmaWxsPSJub25lIiBzdHJva2U9IiNBODdDNEYiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMzIiIHk9IjQ0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iR2VvcmdpYSwgJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmIiBmb250LXNpemU9IjM2IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjQkM5MzYyIj5NPC90ZXh0Pgo8L3N2Zz4K" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   MAJESTIC BARBER — Hoja de estilos
+   Sistema de tokens en 3 capas:  Primitivos  ->  Semánticos  ->  Componente
+   Paleta cálida y relajante (blanco roto / beige / bronce).
+   ========================================================================== */
+
+/* ---------- 1. PRIMITIVOS (valores en crudo) ---------- */
+:root{
+  /* Cremas y arenas */
+  --cream-50:#FCFAF5;
+  --cream-100:#F8F4EC;
+  --cream-200:#F2ECDF;
+  --sand-200:#EFE7D7;
+  --sand-300:#E6DCC9;
+  --sand-400:#DBCFB7;
+  --taupe-400:#C7B89E;
+  --taupe-500:#A89A82;
+
+  /* Bronce / dorado (toma referencia del mapa dorado de la barbería) */
+  --bronze-400:#BC9362;
+  --bronze-500:#A87C4F;
+  --bronze-600:#7E5A30;
+  --bronze-700:#684824;
+
+  /* Espresso (marrón cálido casi negro) */
+  --espresso-700:#4A3F34;
+  --espresso-800:#33291F;
+  --espresso-900:#241C14;
+
+  --warm-grey-500:#6E6152;
+
+  --white:#FFFFFF;
+
+  /* Marcas externas */
+  --whatsapp:#25D366;
+  --whatsapp-dark:#1EAF55;
+
+  /* Sombras */
+  --shadow-sm:0 1px 2px rgba(36,28,20,.05), 0 2px 6px rgba(36,28,20,.04);
+  --shadow-md:0 6px 16px rgba(36,28,20,.08), 0 2px 4px rgba(36,28,20,.05);
+  --shadow-lg:0 18px 48px rgba(36,28,20,.14), 0 6px 14px rgba(36,28,20,.07);
+
+  /* Tipografía */
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:"Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Escala de espaciado (base 4 / 8) */
+  --space-1:.25rem;  --space-2:.5rem;  --space-3:.75rem; --space-4:1rem;
+  --space-5:1.5rem;  --space-6:2rem;   --space-7:3rem;   --space-8:4rem;
+  --space-9:6rem;    --space-10:8rem;
+
+  /* Radios */
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+  --radius-pill:999px;
+
+  /* Anchos y alturas */
+  --container:1200px;
+  --container-narrow:840px;
+  --header-h:74px;
+
+  /* Z-index */
+  --z-header:100;
+  --z-overlay:200;
+  --z-modal:300;
+
+  /* Transiciones */
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:220ms;
+}
+
+/* ---------- 2. SEMÁNTICOS (propósito) ---------- */
+:root{
+  --bg:var(--cream-100);
+  --bg-elevated:var(--white);
+  --bg-soft:var(--sand-200);
+  --bg-contrast:var(--espresso-900);
+
+  --surface:var(--cream-50);
+  --surface-border:var(--sand-300);
+  --hairline:var(--sand-300);
+
+  --text:var(--espresso-900);
+  --text-muted:var(--warm-grey-500);
+  --text-on-dark:var(--cream-100);
+  --text-on-dark-muted:#C9BBA6;
+
+  --accent:var(--bronze-600);          /* bronce legible para texto pequeño */
+  --accent-soft:var(--bronze-500);     /* bronce decorativo / iconos grandes */
+  --accent-strong:var(--bronze-700);
+
+  --focus-ring:var(--bronze-600);
+}
+
+/* ---------- 3. RESET ---------- */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+body{
+  font-family:var(--font-body);
+  font-size:1.0625rem;          /* 17px */
+  line-height:1.65;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
+  overflow-x:clip;
+}
+img,picture,svg,video{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+ul{list-style:none;padding:0}
+:where(a,button,input,summary):focus-visible{
+  outline:3px solid var(--focus-ring);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* ---------- 4. TIPOGRAFÍA ---------- */
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  color:var(--text);
+  font-optical-sizing:auto;
+}
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;height:1.5px;
+  background:var(--accent-soft);
+  display:inline-block;
+}
+.eyebrow--center::after{
+  content:"";
+  width:26px;height:1.5px;
+  background:var(--accent-soft);
+  display:inline-block;
+}
+.h-hero{font-size:clamp(2.9rem,8.5vw,5.4rem);letter-spacing:-.025em}
+.h-section{font-size:clamp(2.05rem,4.6vw,3.1rem)}
+.lead{font-size:clamp(1.08rem,1.6vw,1.25rem);color:var(--text-muted);line-height:1.6}
+.muted{color:var(--text-muted)}
+.serif-italic{font-style:italic;font-weight:400}
+
+/* ---------- 5. LAYOUT ---------- */
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:clamp(1.25rem,5vw,2.5rem);
+}
+.container--narrow{max-width:var(--container-narrow)}
+.section{padding-block:clamp(3.5rem,7.5vw,6.75rem)}
+.section--tight{padding-block:clamp(2.75rem,5vw,4.5rem)}
+.section-head{max-width:62ch}
+.section-head--center{margin-inline:auto;text-align:center;max-width:60ch}
+.section-head .lead{margin-top:var(--space-4)}
+.stack-sm>*+*{margin-top:var(--space-3)}
+.divider{height:1px;background:var(--hairline);border:0}
+
+/* ---------- 6. BOTONES ---------- */
+.btn{
+  --btn-bg:var(--espresso-900);
+  --btn-fg:var(--cream-100);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.6rem;
+  min-height:50px;
+  padding:.85rem 1.6rem;
+  font-weight:600;
+  font-size:1rem;
+  letter-spacing:.01em;
+  border-radius:var(--radius-pill);
+  background:var(--btn-bg);
+  color:var(--btn-fg);
+  border:1.5px solid var(--btn-bg);
+  transition:transform var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  touch-action:manipulation;
+  text-align:center;
+}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn:active{transform:translateY(0)}
+
+.btn--primary{--btn-bg:var(--espresso-900);--btn-fg:var(--cream-100)}
+.btn--primary:hover{--btn-bg:var(--espresso-800)}
+
+.btn--bronze{--btn-bg:var(--bronze-600);--btn-fg:var(--cream-50)}
+.btn--bronze:hover{--btn-bg:var(--bronze-700)}
+
+.btn--outline{
+  --btn-bg:transparent;
+  color:var(--text);
+  border-color:var(--sand-400);
+}
+.btn--outline:hover{
+  background:var(--surface);
+  border-color:var(--espresso-900);
+  box-shadow:var(--shadow-sm);
+}
+
+.btn--whatsapp{--btn-bg:var(--whatsapp);--btn-fg:#FFFFFF;border-color:var(--whatsapp-dark)}
+.btn--whatsapp:hover{--btn-bg:var(--whatsapp-dark)}
+
+.btn--ghost-light{
+  --btn-bg:transparent;
+  color:var(--text-on-dark);
+  border-color:rgba(249,244,236,.35);
+}
+.btn--ghost-light:hover{background:rgba(249,244,236,.08);border-color:var(--text-on-dark)}
+
+.btn--block{width:100%}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+.text-link{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-weight:600;color:var(--accent);
+  border-bottom:1.5px solid transparent;
+  padding-bottom:2px;
+  transition:gap var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease);
+}
+.text-link svg{width:18px;height:18px;transition:transform var(--dur) var(--ease)}
+.text-link:hover{gap:.7rem;border-bottom-color:var(--accent)}
+.text-link:hover svg{transform:translateX(2px)}
+
+/* ---------- 7. HEADER ---------- */
+.site-header{
+  position:sticky;top:0;z-index:var(--z-header);
+  background:#F8F4EC;
+  background:rgba(248,244,236,.86);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.site-header.is-scrolled{
+  border-bottom-color:var(--hairline);
+  background:rgba(248,244,236,.97);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--space-5);
+  min-height:var(--header-h);
+}
+.brand{display:inline-flex;align-items:center;gap:.7rem}
+.brand__mark{width:38px;height:38px;flex:none}
+.brand__text{display:flex;flex-direction:column;line-height:1}
+.brand__name{
+  font-family:var(--font-display);
+  font-weight:600;
+  font-size:1.35rem;
+  letter-spacing:.02em;
+  color:var(--text);
+}
+.brand__sub{
+  font-size:.62rem;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--accent);margin-top:3px;
+}
+.nav{display:flex;align-items:center;gap:var(--space-2)}
+.nav__link{
+  position:relative;
+  padding:.5rem .85rem;
+  font-weight:500;font-size:.98rem;
+  color:var(--espresso-700);
+  border-radius:var(--radius-sm);
+  transition:color var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.nav__link::after{
+  content:"";position:absolute;left:.85rem;right:.85rem;bottom:.28rem;height:1.5px;
+  background:var(--accent-soft);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--dur) var(--ease);
+}
+.nav__link:hover{color:var(--text)}
+.nav__link[aria-current="page"]{color:var(--text)}
+.nav__link[aria-current="page"]::after{transform:scaleX(1)}
+.header-cta{display:flex;align-items:center;gap:var(--space-3)}
+.header-phone{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-weight:600;font-size:.95rem;color:var(--text);
+  padding:.45rem .65rem;border-radius:var(--radius-sm);
+}
+.header-phone svg{width:18px;height:18px;color:var(--accent)}
+.header-phone:hover{background:var(--surface)}
+
+/* Botón hamburguesa */
+.nav-toggle{
+  display:none;
+  width:46px;height:46px;border-radius:var(--radius-sm);
+  align-items:center;justify-content:center;
+  border:1px solid var(--hairline);background:var(--surface);
+}
+.nav-toggle svg{width:24px;height:24px;color:var(--text)}
+.nav-toggle .icon-close{display:none}
+body.menu-open .nav-toggle .icon-open{display:none}
+body.menu-open .nav-toggle .icon-close{display:block}
+
+/* ---------- 8. HERO ---------- */
+.hero{
+  position:relative;
+  padding-block:clamp(2.5rem,6vw,5rem) clamp(3rem,7vw,6rem);
+  background:
+    radial-gradient(120% 90% at 88% 0%, var(--cream-50) 0%, transparent 55%),
+    linear-gradient(180deg, var(--cream-100) 0%, var(--cream-200) 100%);
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:clamp(2rem,5vw,4.5rem);
+  align-items:center;
+}
+.hero__content{max-width:34rem}
+.hero__title{margin-top:var(--space-4)}
+.hero__title em{color:var(--accent)}
+.hero__lead{margin-top:var(--space-5)}
+.hero__cta{margin-top:var(--space-6)}
+.hero__rating{
+  margin-top:var(--space-6);
+  display:inline-flex;align-items:center;gap:.8rem;
+  padding:.7rem 1.1rem;border-radius:var(--radius-pill);
+  background:var(--surface);border:1px solid var(--surface-border);
+  box-shadow:var(--shadow-sm);
+}
+.stars{display:inline-flex;gap:2px;color:var(--bronze-500)}
+.stars svg{width:18px;height:18px}
+.rating-text{font-size:.92rem}
+.rating-text strong{color:var(--text)}
+
+.hero__media{position:relative}
+.hero__frame{
+  position:relative;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  border:1px solid var(--surface-border);
+  background:var(--sand-200);
+}
+.hero__frame img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center 22%;
+}
+.hero__badge{
+  position:absolute;left:-14px;bottom:26px;
+  background:var(--bg-contrast);color:var(--text-on-dark);
+  padding:.85rem 1.15rem;border-radius:var(--radius-md);
+  box-shadow:var(--shadow-md);
+  display:flex;flex-direction:column;gap:2px;
+  max-width:200px;
+}
+.hero__badge b{font-family:var(--font-display);font-size:1.45rem;line-height:1}
+.hero__badge span{font-size:.74rem;letter-spacing:.04em;color:var(--text-on-dark-muted)}
+.hero__deco{
+  position:absolute;inset:auto -22px -22px auto;
+  width:120px;height:120px;border-radius:var(--radius-lg);
+  border:1.5px solid var(--bronze-400);opacity:.5;z-index:-1;
+}
+
+/* ---------- 9. TARJETAS DE VENTAJAS ---------- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+.feature{
+  background:var(--bg-elevated);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease);
+}
+.feature:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.feature__icon{
+  width:54px;height:54px;border-radius:14px;
+  display:grid;place-items:center;
+  background:var(--cream-200);color:var(--accent);
+  border:1px solid var(--sand-300);
+  margin-bottom:var(--space-4);
+}
+.feature__icon svg{width:26px;height:26px}
+.feature h3{font-size:1.3rem;margin-bottom:var(--space-2)}
+.feature p{color:var(--text-muted);font-size:1rem}
+
+/* ---------- 10. SERVICIOS ---------- */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+.service{
+  position:relative;
+  display:flex;flex-direction:column;
+  background:var(--bg-elevated);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease);
+}
+.service:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--sand-400)}
+.service__top{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-3);margin-bottom:var(--space-3)}
+.service__name{font-size:1.45rem}
+.service__price{
+  font-family:var(--font-display);
+  font-size:1.7rem;font-weight:600;color:var(--accent);
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.service__meta{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.85rem;color:var(--text-muted);
+  margin-bottom:var(--space-4);
+}
+.service__meta svg{width:16px;height:16px;color:var(--accent-soft)}
+.service p{color:var(--text-muted);font-size:.98rem}
+.service--feature{border-color:var(--bronze-400);box-shadow:var(--shadow-md)}
+.service__tag{
+  position:absolute;top:-12px;right:var(--space-5);
+  background:var(--bronze-600);color:var(--cream-50);
+  font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:.3rem .7rem;border-radius:var(--radius-pill);
+}
+.services-note{
+  margin-top:var(--space-6);
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-4);
+  justify-content:space-between;
+  padding:var(--space-5);
+  background:var(--bg-soft);
+  border:1px dashed var(--sand-400);
+  border-radius:var(--radius-md);
+}
+.services-note p{color:var(--text-muted);font-size:.95rem;max-width:46ch}
+
+/* ---------- 11. BANDA "SOBRE / EXPERIENCIA" ---------- */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,4.5rem);align-items:center;
+}
+.split--reverse .split__media{order:2}
+.split__media{
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);border:1px solid var(--surface-border);
+  background:var(--sand-200);
+}
+.split__media img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.quote{
+  margin-top:var(--space-5);
+  padding-left:var(--space-5);
+  border-left:3px solid var(--bronze-400);
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:clamp(1.25rem,2vw,1.6rem);
+  line-height:1.45;color:var(--espresso-800);
+}
+.quote cite{
+  display:block;margin-top:var(--space-3);
+  font-family:var(--font-body);font-style:normal;
+  font-size:.9rem;font-weight:600;letter-spacing:.04em;color:var(--text-muted);
+}
+
+/* ---------- 12. GALERÍA (rejilla uniforme) ---------- */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:var(--space-4);
+}
+.gallery--preview{grid-template-columns:repeat(4,1fr)}
+.gallery__item{
+  position:relative;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  background:var(--sand-200);
+  border:1px solid var(--surface-border);
+  cursor:pointer;
+  aspect-ratio:4/5;            /* TODAS las celdas iguales -> rejilla constante */
+}
+.gallery__item img{
+  width:100%;height:100%;
+  object-fit:cover;            /* recorta sin deformar (incl. la foto horizontal) */
+  transition:transform 600ms var(--ease);
+}
+.gallery__item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(36,28,20,.45) 100%);
+  opacity:0;transition:opacity var(--dur) var(--ease);
+}
+.gallery__zoom{
+  position:absolute;right:12px;bottom:12px;z-index:2;
+  width:38px;height:38px;border-radius:var(--radius-pill);
+  display:grid;place-items:center;
+  background:rgba(252,250,245,.85);
+  color:var(--text);
+  opacity:0;transform:translateY(6px);
+  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.gallery__zoom svg{width:18px;height:18px}
+.gallery__item:hover img,.gallery__item:focus-visible img{transform:scale(1.06)}
+.gallery__item:hover::after,.gallery__item:focus-visible::after{opacity:1}
+.gallery__item:hover .gallery__zoom,.gallery__item:focus-visible .gallery__zoom{opacity:1;transform:translateY(0)}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:var(--z-modal);
+  display:none;place-items:center;
+  padding:clamp(1rem,4vw,2.5rem);
+  background:rgba(28,21,14,.82);
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+}
+.lightbox.is-open{display:grid}
+.lightbox__img{
+  max-width:min(92vw,640px);max-height:86vh;
+  width:auto;height:auto;
+  border-radius:var(--radius-md);
+  box-shadow:var(--shadow-lg);
+  border:2px solid rgba(249,244,236,.15);
+}
+.lightbox__btn{
+  position:absolute;
+  width:52px;height:52px;border-radius:var(--radius-pill);
+  display:grid;place-items:center;
+  background:rgba(252,250,245,.94);
+  color:var(--espresso-900);box-shadow:var(--shadow-md);
+}
+.lightbox__btn svg{width:24px;height:24px}
+.lightbox__btn:hover{background:var(--cream-50)}
+.lightbox__close{top:clamp(1rem,3vw,1.75rem);right:clamp(1rem,3vw,1.75rem)}
+.lightbox__prev{left:clamp(.5rem,2vw,1.5rem);top:50%;transform:translateY(-50%)}
+.lightbox__next{right:clamp(.5rem,2vw,1.5rem);top:50%;transform:translateY(-50%)}
+@media (max-width:560px){
+  .lightbox__prev{top:auto;bottom:clamp(1rem,4vw,1.75rem);left:25%;transform:translateX(-50%)}
+  .lightbox__next{top:auto;bottom:clamp(1rem,4vw,1.75rem);right:25%;transform:translateX(50%)}
+}
+
+/* ---------- 13. RESEÑAS ---------- */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+.review{
+  display:flex;flex-direction:column;gap:var(--space-4);
+  background:var(--bg-elevated);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+  box-shadow:var(--shadow-sm);
+}
+.review__stars{color:var(--bronze-500);display:flex;gap:2px}
+.review__stars svg{width:18px;height:18px}
+.review p{color:var(--espresso-800);font-size:1.02rem;flex:1}
+.review__author{display:flex;align-items:center;gap:.7rem}
+.review__avatar{
+  width:40px;height:40px;border-radius:var(--radius-pill);
+  display:grid;place-items:center;flex:none;
+  background:var(--cream-200);color:var(--accent);
+  font-family:var(--font-display);font-weight:600;font-size:1.05rem;
+  border:1px solid var(--sand-300);
+}
+.review__name{font-weight:600;font-size:.95rem;line-height:1.2}
+.review__src{font-size:.78rem;color:var(--text-muted);display:flex;align-items:center;gap:.3rem}
+.review__src svg{width:13px;height:13px}
+.reviews-cta{
+  margin-top:var(--space-7);
+  display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center;justify-content:center;
+}
+
+/* ---------- 14. BANDA CTA OSCURA ---------- */
+.cta-band{
+  background:
+    radial-gradient(100% 140% at 0% 0%, var(--espresso-800) 0%, var(--espresso-900) 60%);
+  color:var(--text-on-dark);
+  border-radius:var(--radius-lg);
+  padding:clamp(2.25rem,5vw,3.75rem);
+  display:grid;grid-template-columns:1.3fr 1fr;gap:var(--space-7);align-items:center;
+  box-shadow:var(--shadow-lg);
+}
+.cta-band h2{color:var(--white)}
+.cta-band .lead{color:var(--text-on-dark-muted)}
+.cta-band__actions{display:flex;flex-direction:column;gap:var(--space-3)}
+.cta-band .eyebrow{color:var(--bronze-400)}
+.cta-band .eyebrow::before{background:var(--bronze-400)}
+
+/* ---------- 15. PAGE HERO (subpáginas) ---------- */
+.page-hero{
+  background:linear-gradient(180deg,var(--cream-100),var(--cream-200));
+  border-bottom:1px solid var(--hairline);
+  padding-block:clamp(2.75rem,6vw,4.5rem);
+}
+.page-hero__inner{max-width:64ch}
+.page-hero h1{font-size:clamp(2.4rem,6vw,3.6rem);margin-top:var(--space-3)}
+.page-hero .lead{margin-top:var(--space-4)}
+.breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--text-muted);margin-bottom:var(--space-2)}
+.breadcrumb a:hover{color:var(--accent)}
+.breadcrumb svg{width:14px;height:14px;opacity:.6}
+
+/* ---------- 16. CONTACTO ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,4vw,3.5rem);align-items:start}
+.info-card{
+  background:var(--bg-elevated);
+  border:1px solid var(--surface-border);
+  border-radius:var(--radius-md);
+  padding:clamp(1.5rem,3vw,2.25rem);
+  box-shadow:var(--shadow-sm);
+}
+.info-card+.info-card{margin-top:var(--space-5)}
+.info-row{display:flex;gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--hairline)}
+.info-row:last-child{border-bottom:0;padding-bottom:0}
+.info-row:first-child{padding-top:0}
+.info-row__icon{
+  width:44px;height:44px;border-radius:12px;flex:none;
+  display:grid;place-items:center;
+  background:var(--cream-200);color:var(--accent);border:1px solid var(--sand-300);
+}
+.info-row__icon svg{width:21px;height:21px}
+.info-row__label{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px}
+.info-row__value{font-size:1.05rem;font-weight:500;color:var(--text)}
+.info-row__value a:hover{color:var(--accent)}
+
+.hours-list{width:100%}
+.hours-list li{display:flex;justify-content:space-between;gap:var(--space-4);padding:.5rem 0;font-size:.98rem;border-bottom:1px dashed var(--hairline)}
+.hours-list li:last-child{border-bottom:0}
+.hours-list .day{font-weight:500}
+.hours-list .time{color:var(--text-muted);font-variant-numeric:tabular-nums;text-align:right}
+.hours-list li.is-closed .time{color:var(--bronze-600);font-weight:600}
+.hours-list li.is-today{
+  background:var(--cream-200);
+  margin-inline:calc(-1 * var(--space-3));
+  padding-inline:var(--space-3);
+  border-radius:var(--radius-sm);
+  border-bottom-color:transparent;
+}
+
+.map-card{
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:1px solid var(--surface-border);
+  box-shadow:var(--shadow-md);
+  background:var(--sand-200);
+}
+.map-card iframe{display:block;width:100%;height:100%;min-height:460px;border:0;filter:saturate(.92)}
+.map-actions{
+  display:flex;flex-wrap:wrap;gap:var(--space-3);
+  padding:var(--space-4);background:var(--bg-elevated);border-top:1px solid var(--hairline);
+}
+
+/* Redes sociales */
+.socials{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-2)}
+.social-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.7rem 1.05rem;
+  border-radius:var(--radius-pill);
+  border:1.5px solid var(--surface-border);
+  background:var(--surface);
+  font-weight:600;font-size:.95rem;color:var(--text);
+  min-height:48px;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease),background var(--dur) var(--ease);
+}
+.social-btn svg{width:21px;height:21px;flex:none}
+.social-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm);border-color:var(--sand-400)}
+.social-btn--ig:hover{border-color:#C13584}
+.social-btn--ig svg{color:#C13584}
+.social-btn--tiktok svg{color:var(--espresso-900)}
+.social-btn--fb svg{color:#1877F2}
+.social-btn--fb:hover{border-color:#1877F2}
+
+/* ---------- 17. FOOTER ---------- */
+.site-footer{
+  background:var(--espresso-900);
+  color:var(--text-on-dark);
+  padding-block:clamp(3rem,6vw,4.5rem) var(--space-6);
+  margin-top:clamp(3.5rem,7vw,6rem);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1.1fr;
+  gap:var(--space-7);
+}
+.footer-brand .brand__name{color:var(--white)}
+.footer-brand p{color:var(--text-on-dark-muted);margin-top:var(--space-4);max-width:34ch;font-size:.96rem}
+.footer-col h4{font-family:var(--font-body);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-400);font-weight:600;margin-bottom:var(--space-4)}
+.footer-col li+li{margin-top:var(--space-3)}
+.footer-col a,.footer-col span{color:var(--text-on-dark-muted);font-size:.96rem;transition:color var(--dur) var(--ease)}
+.footer-col a:hover{color:var(--white)}
+.footer-contact a{display:inline-flex;align-items:center;gap:.55rem}
+.footer-contact svg{width:17px;height:17px;color:var(--bronze-400);flex:none}
+.footer-socials{display:flex;gap:var(--space-3);margin-top:var(--space-4)}
+.footer-social{
+  width:44px;height:44px;border-radius:var(--radius-pill);
+  display:grid;place-items:center;
+  border:1px solid rgba(249,244,236,.18);color:var(--text-on-dark);
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),transform var(--dur) var(--ease);
+}
+.footer-social svg{width:20px;height:20px}
+.footer-social:hover{background:rgba(249,244,236,.1);border-color:rgba(249,244,236,.4);transform:translateY(-2px)}
+.footer-bottom{
+  margin-top:clamp(2rem,4vw,3rem);padding-top:var(--space-5);
+  border-top:1px solid rgba(249,244,236,.14);
+  display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;
+}
+.footer-bottom p{color:var(--text-on-dark-muted);font-size:.86rem}
+.footer-bottom a{color:var(--text-on-dark-muted);font-size:.86rem}
+.footer-bottom a:hover{color:var(--white)}
+
+/* ---------- 18. UTILIDADES ---------- */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+.skip-link{
+  position:absolute;left:50%;transform:translateX(-50%) translateY(-150%);
+  top:8px;z-index:var(--z-overlay);
+  background:var(--espresso-900);color:var(--cream-50);
+  padding:.6rem 1.1rem;border-radius:var(--radius-pill);font-weight:600;font-size:.9rem;
+  transition:transform var(--dur) var(--ease);
+}
+.skip-link:focus{transform:translateX(-50%) translateY(0)}
+.center{text-align:center}
+.mt-6{margin-top:var(--space-6)}
+
+/* Aparición al hacer scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ==========================================================================
+   19. RESPONSIVE
+   ========================================================================== */
+@media (max-width:1024px){
+  :root{--header-h:68px}
+  .footer-grid{grid-template-columns:1.4fr 1fr 1fr;gap:var(--space-6)}
+  .footer-contact{grid-column:1/-1}
+  .gallery--preview{grid-template-columns:repeat(3,1fr)}
+}
+
+@media (max-width:900px){
+  /* Navegación móvil */
+  .nav-toggle{display:inline-flex}
+  .header-phone{display:none}
+  .nav{
+    position:fixed;inset:var(--header-h) 0 auto 0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:var(--cream-50);
+    border-bottom:1px solid var(--hairline);
+    box-shadow:var(--shadow-lg);
+    padding:var(--space-3) clamp(1.25rem,5vw,2.5rem) var(--space-5);
+    transform:translateY(-12px);opacity:0;pointer-events:none;
+    transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease);
+    max-height:calc(100dvh - var(--header-h));overflow-y:auto;
+  }
+  body.menu-open .nav{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav__link{padding:.9rem .25rem;font-size:1.1rem;border-bottom:1px solid var(--hairline);border-radius:0}
+  .nav__link::after{display:none}
+  .nav__link[aria-current="page"]{color:var(--accent)}
+  .nav .btn{margin-top:var(--space-4)}
+
+  .hero__grid{grid-template-columns:1fr;gap:var(--space-7)}
+  .hero__content{max-width:none;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .hero__media{order:-1;max-width:380px;margin-inline:auto;width:100%}
+  .hero__frame img{aspect-ratio:5/5}
+  .hero__badge{left:auto;right:14px}
+
+  .features,.services,.reviews{grid-template-columns:1fr 1fr;gap:var(--space-4)}
+  .split{grid-template-columns:1fr;gap:var(--space-6)}
+  .split--reverse .split__media{order:0}
+  .split__media{max-width:480px;margin-inline:auto;width:100%}
+  .cta-band{grid-template-columns:1fr;gap:var(--space-5);text-align:center}
+  .cta-band .eyebrow{justify-content:center}
+  .cta-band__actions{max-width:360px;margin-inline:auto;width:100%}
+  .contact-grid{grid-template-columns:1fr;gap:var(--space-6)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:var(--space-6)}
+  .footer-brand{grid-column:1/-1}
+}
+
+@media (max-width:560px){
+  body{font-size:1rem}
+  .section-head--center,.hero__content{text-align:center}
+  .features,.services,.reviews,.gallery,.gallery--preview{grid-template-columns:1fr;gap:var(--space-4)}
+  .gallery__item{aspect-ratio:4/5}
+  .btn-row .btn{width:100%}
+  .hero__cta .btn{width:100%}
+  .service__tag{right:50%;transform:translateX(50%)}
+  .services-note{flex-direction:column;align-items:flex-start}
+  .reviews-cta{flex-direction:column}
+  .reviews-cta .btn{width:100%}
+  .footer-grid{grid-template-columns:1fr;gap:var(--space-6)}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:var(--space-2)}
+  .map-actions .btn{width:100%}
+  .brand__sub{letter-spacing:.26em}
+}
+
+@media (min-width:561px) and (max-width:900px){
+  /* En 2 columnas, la 3ª tarjeta de reseñas/servicios ocupa todo el ancho para no quedar coja */
+  .reviews .review:nth-child(3):last-child,
+  .services .service:nth-child(3):last-child,
+  .features .feature:nth-child(3):last-child{grid-column:1/-1}
+}
+
+/* ==========================================================================
+   20. AJUSTES MÓVIL — experiencia premium y scroll fluido
+   ========================================================================== */
+
+/* Realimentación táctil sutil al pulsar */
+.btn:active{transform:scale(.97)}
+.gallery__item:active img{transform:scale(1.03)}
+
+/* Evitar el "hover pegado" tras tocar en pantallas táctiles */
+@media (hover:none){
+  .btn:hover,.feature:hover,.service:hover,.review:hover,
+  .social-btn:hover,.footer-social:hover,.text-link:hover,
+  .header-phone:hover,.nav__link:hover{transform:none}
+  .btn:hover{box-shadow:none}
+  .feature:hover,.service:hover,.review:hover,.social-btn:hover{box-shadow:var(--shadow-sm)}
+  .gallery__item:hover img,.gallery__item:focus-visible img{transform:none}
+  .gallery__item:hover::after{opacity:0}
+  .gallery__zoom{opacity:1;transform:none}      /* siempre visible: indica "tocar para ampliar" */
+}
+
+@media (max-width:900px){
+  /* Cabecera sólida -> scroll fluido (el blur causa tirones en el móvil) */
+  .site-header{
+    background:#F8F4EC;
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    border-bottom:1px solid var(--hairline);
+  }
+  .site-header.is-scrolled{background:#F8F4EC}
+
+  /* Cuadro decorativo fuera: provocaba scroll horizontal */
+  .hero__deco{display:none}
+
+  /* Héroe: primero el mensaje y los botones; la imagen, después */
+  .hero{padding-block:clamp(1.25rem,5vw,2rem) clamp(2.25rem,7vw,3.25rem)}
+  .hero__media{order:0;max-width:340px}
+  .hero__frame img{aspect-ratio:4/5;object-position:center 26%}
+  .hero__title{margin-top:var(--space-3)}
+  .hero__lead{margin-top:var(--space-4)}
+  .hero__cta{margin-top:var(--space-5)}
+  .hero__rating{margin-top:var(--space-5)}
+
+  /* Aparición más corta y ágil */
+  .reveal{transform:translateY(14px);transition-duration:.5s}
+
+  /* Mapa más proporcionado */
+  .map-card iframe{min-height:340px}
+
+  /* Banda CTA: respiración correcta apilada */
+  .cta-band__actions{gap:var(--space-3)}
+}
+
+@media (max-width:560px){
+  /* Ritmo vertical más compacto y premium */
+  .section{padding-block:clamp(2.75rem,9vw,3.75rem)}
+  .section--tight{padding-block:clamp(2.25rem,7vw,3rem)}
+  .h-hero{font-size:clamp(2.6rem,11.5vw,3.5rem);line-height:1.05}
+  .h-section{font-size:clamp(1.9rem,7vw,2.4rem)}
+  .hero__media{max-width:300px}
+  .hero__badge{padding:.7rem .95rem}
+  .hero__badge b{font-size:1.25rem}
+  .cta-band{padding:1.85rem 1.4rem}
+  .info-card{padding:1.4rem}
+  .feature,.service,.review{padding:1.5rem}
+  .quote{font-size:1.2rem;padding-left:1.1rem}
+  .section-head .lead{margin-top:var(--space-3)}
+}
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<!-- ============ CABECERA ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Majestic Barber — Inicio">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#241C14"/>
+        <rect x="4" y="4" width="56" height="56" rx="11" fill="none" stroke="#A87C4F" stroke-width="1.5"/>
+        <text x="32" y="44" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="36" font-weight="600" fill="#BC9362">M</text>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Majestic</span>
+        <span class="brand__sub">Barbería · Burgos</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Navegación principal">
+      <a class="nav__link" href="index.html">Inicio</a>
+      <a class="nav__link" href="servicios.html" aria-current="page">Servicios</a>
+      <a class="nav__link" href="galeria.html">Galería</a>
+      <a class="nav__link" href="contacto.html">Contacto</a>
+      <a class="btn btn--bronze" href="contacto.html">Pide cita</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="header-phone" href="tel:+34642659621">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        642 65 96 21
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primary-nav">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="breadcrumb" aria-label="Migas de pan">
+        <a href="index.html">Inicio</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span>Servicios</span>
+      </nav>
+      <span class="eyebrow">Servicios y precios</span>
+      <h1>Cortes, barba y acabado</h1>
+      <p class="lead">Precios sencillos y un trabajo cuidado. Reserva el que necesites; si tienes dudas, te aconsejamos sin compromiso.</p>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS PRINCIPALES ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="services">
+        <article class="service reveal">
+          <div class="service__top">
+            <h2 class="service__name">Corte</h2>
+            <span class="service__price">15&nbsp;€</span>
+          </div>
+          <span class="service__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Aprox. 40 min</span>
+          <p>Corte de pelo a tijera y máquina adaptado a tu estilo, con lavado y peinado. Acabado limpio y a tu gusto.</p>
+        </article>
+
+        <article class="service service--feature reveal">
+          <span class="service__tag">Más pedido</span>
+          <div class="service__top">
+            <h2 class="service__name">Corte&nbsp;+&nbsp;Barba</h2>
+            <span class="service__price">20&nbsp;€</span>
+          </div>
+          <span class="service__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Aprox. 1 h</span>
+          <p>Nuestro combo estrella: corte completo más perfilado y arreglo de barba con toalla y detalle final.</p>
+        </article>
+
+        <article class="service reveal">
+          <div class="service__top">
+            <h2 class="service__name">Servicio completo</h2>
+            <span class="service__price">23&nbsp;€</span>
+          </div>
+          <span class="service__meta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Aprox. 1 h 10 min</span>
+          <p>La experiencia al completo: corte, barba y todos los detalles para salir impecable de principio a fin.</p>
+        </article>
+      </div>
+
+      <!-- Nota: los precios son orientativos. Cambia los importes aquí si varían. -->
+      <div class="services-note reveal">
+        <p>Los precios son orientativos y pueden variar según el servicio. ¿Tienes una petición concreta? Escríbenos y te confirmamos al momento.</p>
+        <a class="btn btn--whatsapp" href="https://wa.me/34642659621?text=Hola%2C%20quer%C3%ADa%20preguntar%20por%20un%20servicio%20de%20Majestic%20Barber" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OTROS SERVICIOS + HORARIO ============ -->
+  <section class="section" style="background:var(--bg-soft)">
+    <div class="container">
+      <div class="split">
+        <!-- Otros servicios: edita los nombres o añade precios cuando quieras -->
+        <div class="reveal">
+          <span class="eyebrow">Más opciones</span>
+          <h2 class="h-section" style="margin-top:var(--space-3)">¿Buscas algo más?</h2>
+          <p class="lead" style="margin-top:var(--space-4)">Estos extras se ajustan a lo que necesites. Pregúntanos y te pasamos el precio antes de empezar.</p>
+          <ul class="hours-list" style="margin-top:var(--space-5)">
+            <li><span class="day">Arreglo de barba</span><span class="time">Consultar</span></li>
+            <li><span class="day">Perfilado de cejas</span><span class="time">Consultar</span></li>
+            <li><span class="day">Corte infantil</span><span class="time">Consultar</span></li>
+            <li><span class="day">Diseños y líneas</span><span class="time">Consultar</span></li>
+          </ul>
+          <div class="btn-row" style="margin-top:var(--space-6)">
+            <a class="btn btn--primary" href="contacto.html">Pide tu cita</a>
+            <a class="btn btn--outline" href="galeria.html">Ver galería</a>
+          </div>
+        </div>
+
+        <!-- Horario -->
+        <div class="info-card reveal">
+          <span class="eyebrow">Horario</span>
+          <h3 style="font-size:1.5rem;margin:var(--space-3) 0 var(--space-4)">Cuándo abrimos</h3>
+          <ul class="hours-list">
+            <li><span class="day">Lunes</span><span class="time">10–14 · 16:30–21:30</span></li>
+            <li><span class="day">Martes</span><span class="time">10–14 · 16:30–21:30</span></li>
+            <li><span class="day">Miércoles</span><span class="time">10–14 · 16:30–21:30</span></li>
+            <li><span class="day">Jueves</span><span class="time">10–14 · 16:30–22:00</span></li>
+            <li><span class="day">Viernes</span><span class="time">10–14 · 16:30–21:30</span></li>
+            <li><span class="day">Sábado</span><span class="time">10–14 · 16:30–21:30</span></li>
+            <li class="is-closed"><span class="day">Domingo</span><span class="time">Cerrado</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDA CTA ============ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow">Reserva tu hueco</span>
+          <h2 class="h-section" style="margin-top:var(--space-3)">Te dejamos como nuevo</h2>
+          <p class="lead">Escríbenos por WhatsApp o llámanos y elegimos juntos el mejor momento para tu cita.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--whatsapp btn--block" href="https://wa.me/34642659621?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita%20en%20Majestic%20Barber" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+            Escribir por WhatsApp
+          </a>
+          <a class="btn btn--ghost-light btn--block" href="tel:+34642659621">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Llamar 642 65 96 21
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Majestic Barber — Inicio">
+          <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1c150e"/>
+            <rect x="4" y="4" width="56" height="56" rx="11" fill="none" stroke="#A87C4F" stroke-width="1.5"/>
+            <text x="32" y="44" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="36" font-weight="600" fill="#BC9362">M</text>
+          </svg>
+          <span class="brand__text"><span class="brand__name">Majestic</span><span class="brand__sub">Barbería · Burgos</span></span>
+        </a>
+        <p>Barbería en el centro de Burgos. Cortes, degradados y barba con acabado profesional y trato cercano.</p>
+        <div class="footer-socials">
+          <!-- Verifica que este sea tu Instagram y cámbialo si no lo es -->
+          <a class="footer-social" href="https://www.instagram.com/majestic.barbers/" target="_blank" rel="noopener" aria-label="Instagram de Majestic Barber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a class="footer-social" href="https://wa.me/34642659621" target="_blank" rel="noopener" aria-label="WhatsApp de Majestic Barber">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-col" aria-label="Páginas">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios y precios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <ul>
+          <li><span>Lun – Mié&nbsp;&nbsp;10–14 · 16:30–21:30</span></li>
+          <li><span>Jueves&nbsp;&nbsp;10–14 · 16:30–22:00</span></li>
+          <li><span>Vie – Sáb&nbsp;&nbsp;10–14 · 16:30–21:30</span></li>
+          <li><span>Domingo&nbsp;&nbsp;Cerrado</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-contact">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Majestic%20Barber%2C%20Calle%20de%20la%20Igualdad%202%2C%2009007%20Burgos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> C. de la Igualdad, 2, 09007 Burgos</a></li>
+          <li><a href="tel:+34642659621"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 642 65 96 21</a></li>
+          <li><a href="https://search.google.com/local/writereview?placeid=ChIJ93r1tU_9RQ0RBpmFjaTREUM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg> Deja tu reseña en Google</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span data-year>2025</span> Majestic Barber · Burgos. Todos los derechos reservados.</p>
+      <a href="contacto.html">Cómo llegar</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* MAJESTIC BARBER — interacciones (vanilla JS, sin dependencias) */
+(function () {
+  "use strict";
+
+  /* ---------- Año actual en el footer ---------- */
+  document.querySelectorAll("[data-year]").forEach(function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
+  /* ---------- Cabecera: estado al hacer scroll ---------- */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  /* ---------- Menú móvil ---------- */
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("primary-nav");
+  if (toggle && nav) {
+    var setMenu = function (open) {
+      document.body.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+    toggle.addEventListener("click", function () {
+      setMenu(!document.body.classList.contains("menu-open"));
+    });
+    nav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setMenu(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setMenu(false);
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900) setMenu(false);
+    });
+  }
+
+  /* ---------- Aparición progresiva al hacer scroll ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reveals.length && "IntersectionObserver" in window) {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+    reveals.forEach(function (el) {
+      io.observe(el);
+    });
+  } else {
+    reveals.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  /* ---------- Lightbox de la galería ---------- */
+  var lb = document.getElementById("lightbox");
+  var items = Array.prototype.slice.call(document.querySelectorAll(".gallery__item"));
+  if (lb && items.length) {
+    var lbImg = lb.querySelector(".lightbox__img");
+    var btnClose = lb.querySelector(".lightbox__close");
+    var btnPrev = lb.querySelector(".lightbox__prev");
+    var btnNext = lb.querySelector(".lightbox__next");
+    var current = 0;
+    var lastFocused = null;
+
+    var sources = items.map(function (it) {
+      var img = it.querySelector("img");
+      return { src: img.getAttribute("src"), alt: img.getAttribute("alt") || "" };
+    });
+
+    var show = function (i) {
+      current = (i + sources.length) % sources.length;
+      lbImg.setAttribute("src", sources[current].src);
+      lbImg.setAttribute("alt", sources[current].alt);
+    };
+    var open = function (i) {
+      lastFocused = document.activeElement;
+      show(i);
+      lb.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      btnClose.focus();
+    };
+    var close = function () {
+      lb.classList.remove("is-open");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    };
+
+    items.forEach(function (it, i) {
+      // Los .gallery__item son <button>, así que Enter/Espacio ya disparan "click".
+      it.addEventListener("click", function () {
+        open(i);
+      });
+    });
+
+    btnClose.addEventListener("click", close);
+    btnPrev.addEventListener("click", function () {
+      show(current - 1);
+    });
+    btnNext.addEventListener("click", function () {
+      show(current + 1);
+    });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("is-open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(current - 1);
+      else if (e.key === "ArrowRight") show(current + 1);
+    });
+  }
+})();
+</script>
+</body>
+</html>
