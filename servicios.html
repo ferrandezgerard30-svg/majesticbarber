@@ -498,65 +498,15 @@ body.menu-open .nav-toggle .icon-close{display:block}
   overflow:hidden;
   background:var(--sand-200);
   border:1px solid var(--surface-border);
-  cursor:pointer;
   aspect-ratio:4/5;            /* TODAS las celdas iguales -> rejilla constante */
+  margin:0;
 }
 .gallery__item img{
   width:100%;height:100%;
   object-fit:cover;            /* recorta sin deformar (incl. la foto horizontal) */
   transition:transform 600ms var(--ease);
 }
-.gallery__item::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 55%,rgba(36,28,20,.45) 100%);
-  opacity:0;transition:opacity var(--dur) var(--ease);
-}
-.gallery__zoom{
-  position:absolute;right:12px;bottom:12px;z-index:2;
-  width:38px;height:38px;border-radius:var(--radius-pill);
-  display:grid;place-items:center;
-  background:rgba(252,250,245,.85);
-  color:var(--text);
-  opacity:0;transform:translateY(6px);
-  transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);
-}
-.gallery__zoom svg{width:18px;height:18px}
-.gallery__item:hover img,.gallery__item:focus-visible img{transform:scale(1.06)}
-.gallery__item:hover::after,.gallery__item:focus-visible::after{opacity:1}
-.gallery__item:hover .gallery__zoom,.gallery__item:focus-visible .gallery__zoom{opacity:1;transform:translateY(0)}
-
-/* Lightbox */
-.lightbox{
-  position:fixed;inset:0;z-index:var(--z-modal);
-  display:none;place-items:center;
-  padding:clamp(1rem,4vw,2.5rem);
-  background:rgba(28,21,14,.82);
-  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
-}
-.lightbox.is-open{display:grid}
-.lightbox__img{
-  max-width:min(92vw,640px);max-height:86vh;
-  width:auto;height:auto;
-  border-radius:var(--radius-md);
-  box-shadow:var(--shadow-lg);
-  border:2px solid rgba(249,244,236,.15);
-}
-.lightbox__btn{
-  position:absolute;
-  width:52px;height:52px;border-radius:var(--radius-pill);
-  display:grid;place-items:center;
-  background:rgba(252,250,245,.94);
-  color:var(--espresso-900);box-shadow:var(--shadow-md);
-}
-.lightbox__btn svg{width:24px;height:24px}
-.lightbox__btn:hover{background:var(--cream-50)}
-.lightbox__close{top:clamp(1rem,3vw,1.75rem);right:clamp(1rem,3vw,1.75rem)}
-.lightbox__prev{left:clamp(.5rem,2vw,1.5rem);top:50%;transform:translateY(-50%)}
-.lightbox__next{right:clamp(.5rem,2vw,1.5rem);top:50%;transform:translateY(-50%)}
-@media (max-width:560px){
-  .lightbox__prev{top:auto;bottom:clamp(1rem,4vw,1.75rem);left:25%;transform:translateX(-50%)}
-  .lightbox__next{top:auto;bottom:clamp(1rem,4vw,1.75rem);right:25%;transform:translateX(50%)}
-}
+.gallery__item:hover img{transform:scale(1.04)}
 
 /* ---------- 13. RESEÑAS ---------- */
 .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
@@ -824,7 +774,6 @@ body.menu-open .nav-toggle .icon-close{display:block}
 
 /* Realimentación táctil sutil al pulsar */
 .btn:active{transform:scale(.97)}
-.gallery__item:active img{transform:scale(1.03)}
 
 /* Evitar el "hover pegado" tras tocar en pantallas táctiles */
 @media (hover:none){
@@ -833,9 +782,7 @@ body.menu-open .nav-toggle .icon-close{display:block}
   .header-phone:hover,.nav__link:hover{transform:none}
   .btn:hover{box-shadow:none}
   .feature:hover,.service:hover,.review:hover,.social-btn:hover{box-shadow:var(--shadow-sm)}
-  .gallery__item:hover img,.gallery__item:focus-visible img{transform:none}
-  .gallery__item:hover::after{opacity:0}
-  .gallery__zoom{opacity:1;transform:none}      /* siempre visible: indica "tocar para ampliar" */
+  .gallery__item:hover img{transform:none}
 }
 
 @media (max-width:900px){
@@ -1175,65 +1122,6 @@ body.menu-open .nav-toggle .icon-close{display:block}
   } else {
     reveals.forEach(function (el) {
       el.classList.add("is-visible");
-    });
-  }
-
-  /* ---------- Lightbox de la galería ---------- */
-  var lb = document.getElementById("lightbox");
-  var items = Array.prototype.slice.call(document.querySelectorAll(".gallery__item"));
-  if (lb && items.length) {
-    var lbImg = lb.querySelector(".lightbox__img");
-    var btnClose = lb.querySelector(".lightbox__close");
-    var btnPrev = lb.querySelector(".lightbox__prev");
-    var btnNext = lb.querySelector(".lightbox__next");
-    var current = 0;
-    var lastFocused = null;
-
-    var sources = items.map(function (it) {
-      var img = it.querySelector("img");
-      return { src: img.getAttribute("src"), alt: img.getAttribute("alt") || "" };
-    });
-
-    var show = function (i) {
-      current = (i + sources.length) % sources.length;
-      lbImg.setAttribute("src", sources[current].src);
-      lbImg.setAttribute("alt", sources[current].alt);
-    };
-    var open = function (i) {
-      lastFocused = document.activeElement;
-      show(i);
-      lb.classList.add("is-open");
-      document.body.style.overflow = "hidden";
-      btnClose.focus();
-    };
-    var close = function () {
-      lb.classList.remove("is-open");
-      document.body.style.overflow = "";
-      if (lastFocused) lastFocused.focus();
-    };
-
-    items.forEach(function (it, i) {
-      // Los .gallery__item son <button>, así que Enter/Espacio ya disparan "click".
-      it.addEventListener("click", function () {
-        open(i);
-      });
-    });
-
-    btnClose.addEventListener("click", close);
-    btnPrev.addEventListener("click", function () {
-      show(current - 1);
-    });
-    btnNext.addEventListener("click", function () {
-      show(current + 1);
-    });
-    lb.addEventListener("click", function (e) {
-      if (e.target === lb) close();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (!lb.classList.contains("is-open")) return;
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowLeft") show(current - 1);
-      else if (e.key === "ArrowRight") show(current + 1);
     });
   }
 })();
