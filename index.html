@@ -844,6 +844,60 @@ body.menu-open .nav-toggle .icon-close{display:block}
   .brand__logo{height:38px}
 }
 
+/* ==========================================================================
+   21. CARRUSEL — reseñas, trabajos y ventajas (portada)
+   ========================================================================== */
+.carousel{position:relative}
+.carousel.is-scrollable{padding-inline:clamp(42px,5vw,54px)}
+.carousel__track{
+  display:flex;
+  gap:var(--gap,1.5rem);
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding:6px 2px;
+}
+.carousel__track::-webkit-scrollbar{display:none}
+.carousel__track>*{scroll-snap-align:start;flex:0 0 var(--slide-w,100%)}
+
+.carousel--cards{--gap:1.5rem}
+.carousel--cards .carousel__track{--slide-w:calc((100% - 2 * var(--gap)) / 3)}
+.carousel--gallery{--gap:1rem}
+.carousel--gallery .carousel__track{--slide-w:calc((100% - 3 * var(--gap)) / 4);align-items:start}
+
+.carousel__arrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:46px;height:46px;border-radius:var(--radius-pill);
+  display:none;place-items:center;
+  background:var(--bg-elevated);color:var(--text);
+  border:1px solid var(--surface-border);box-shadow:var(--shadow-md);
+  transition:background var(--dur) var(--ease),opacity var(--dur) var(--ease);
+}
+.carousel.is-scrollable .carousel__arrow{display:grid}
+.carousel__arrow svg{width:22px;height:22px}
+.carousel__arrow:hover{background:var(--surface)}
+.carousel__arrow:active{transform:translateY(-50%) scale(.93)}
+.carousel__arrow--prev{left:0}
+.carousel__arrow--next{right:0}
+.carousel__arrow:disabled{opacity:.3;box-shadow:var(--shadow-sm);cursor:default}
+
+@media (max-width:900px){
+  .carousel--cards .carousel__track{--slide-w:calc((100% - var(--gap)) / 2)}
+  .carousel--gallery .carousel__track{--slide-w:calc((100% - 2 * var(--gap)) / 3)}
+}
+@media (max-width:560px){
+  .carousel.is-scrollable{padding-inline:40px}
+  .carousel__arrow{width:38px;height:38px}
+  .carousel__arrow svg{width:19px;height:19px}
+  .carousel--cards .carousel__track{--slide-w:100%}
+  .carousel--gallery .carousel__track{--slide-w:calc((100% - var(--gap)) / 2)}
+}
+@media (prefers-reduced-motion:reduce){
+  .carousel__track{scroll-behavior:auto}
+}
+
 </style>
 
 <!-- Datos de negocio para Google (SEO local) -->
@@ -944,22 +998,26 @@ body.menu-open .nav-toggle .icon-close{display:block}
   <!-- ============ VENTAJAS ============ -->
   <section class="section">
     <div class="container">
-      <div class="features">
-        <article class="feature reveal">
-          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3>Barberos con experiencia</h3>
-          <p>Profesionales atentos que escuchan lo que buscas y lo ejecutan al detalle, visita tras visita.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div>
-          <h3>Corte y barba a medida</h3>
-          <p>Desde clásicos atemporales hasta degradados y diseños. Acabado limpio y resultado que dura.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 13.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></div>
-          <h3>Ambiente cuidado</h3>
-          <p>Un local limpio y agradable donde sentarte tranquilo, sin prisas y con buen rollo.</p>
-        </article>
+      <div class="carousel carousel--cards reveal" data-carousel aria-label="Ventajas de la barbería">
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="carousel__track">
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h3>Barberos con experiencia</h3>
+            <p>Profesionales atentos que escuchan lo que buscas y lo ejecutan al detalle, visita tras visita.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div>
+            <h3>Corte y barba a medida</h3>
+            <p>Desde clásicos atemporales hasta degradados y diseños. Acabado limpio y resultado que dura.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 13.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></div>
+            <h3>Ambiente cuidado</h3>
+            <p>Un local limpio y agradable donde sentarte tranquilo, sin prisas y con buen rollo.</p>
+          </article>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
     </div>
   </section>
@@ -1042,11 +1100,15 @@ body.menu-open .nav-toggle .icon-close{display:block}
         <p class="lead">Una muestra de cortes, degradados y barbas hechos en la barbería.</p>
       </div>
 
-      <div class="gallery gallery--preview" style="margin-top:var(--space-7)">
-        <figure class="gallery__item reveal"><img src="images/majesticbarbertrabajos5.webp" width="765" height="1020" loading="lazy" alt="Degradado con diseño de corazón rapado en el lateral"></figure>
-        <figure class="gallery__item reveal"><img src="images/majesticbarbertrabajos1.webp" width="765" height="1020" loading="lazy" alt="Corte texturizado con líneas rapadas y degradado bajo"></figure>
-        <figure class="gallery__item reveal"><img src="images/majesticbarbertrabajos2.webp" width="1360" height="1020" loading="lazy" alt="Corte clásico con raya marcada y degradado a los lados"></figure>
-        <figure class="gallery__item reveal"><img src="images/majesticbarbertrabajos4.webp" width="765" height="1020" loading="lazy" alt="Corte infantil texturizado con degradado suave"></figure>
+      <div class="carousel carousel--gallery reveal" data-carousel aria-label="Trabajos recientes" style="margin-top:var(--space-7)">
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="carousel__track">
+          <figure class="gallery__item"><img src="images/majesticbarbertrabajos5.webp" width="765" height="1020" loading="lazy" alt="Degradado con diseño de corazón rapado en el lateral"></figure>
+          <figure class="gallery__item"><img src="images/majesticbarbertrabajos1.webp" width="765" height="1020" loading="lazy" alt="Corte texturizado con líneas rapadas y degradado bajo"></figure>
+          <figure class="gallery__item"><img src="images/majesticbarbertrabajos2.webp" width="1360" height="1020" loading="lazy" alt="Corte clásico con raya marcada y degradado a los lados"></figure>
+          <figure class="gallery__item"><img src="images/majesticbarbertrabajos4.webp" width="765" height="1020" loading="lazy" alt="Corte infantil texturizado con degradado suave"></figure>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
 
       <div class="center mt-6">
@@ -1064,8 +1126,10 @@ body.menu-open .nav-toggle .icon-close{display:block}
         <p class="lead">Valoración media de <strong>4,9 sobre 5</strong> en Google.</p>
       </div>
 
-      <div class="reviews" style="margin-top:var(--space-7)">
-        <article class="review reveal">
+      <div class="carousel carousel--cards reveal" data-carousel aria-label="Opiniones de clientes" style="margin-top:var(--space-7)">
+        <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="carousel__track">
+        <article class="review">
           <span class="review__stars" aria-label="5 de 5 estrellas">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
@@ -1083,7 +1147,7 @@ body.menu-open .nav-toggle .icon-close{display:block}
           </div>
         </article>
 
-        <article class="review reveal">
+        <article class="review">
           <span class="review__stars" aria-label="5 de 5 estrellas">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
@@ -1101,7 +1165,7 @@ body.menu-open .nav-toggle .icon-close{display:block}
           </div>
         </article>
 
-        <article class="review reveal">
+        <article class="review">
           <span class="review__stars" aria-label="5 de 5 estrellas">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.93 6.06 6.57.79-4.84 4.5 1.26 6.65L12 18.6l-5.92 3.4 1.26-6.65L2.5 9.35l6.57-.79L12 2.5z"/></svg>
@@ -1118,6 +1182,8 @@ body.menu-open .nav-toggle .icon-close{display:block}
             </span>
           </div>
         </article>
+        </div>
+        <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
 
       <div class="reviews-cta">
@@ -1274,6 +1340,41 @@ body.menu-open .nav-toggle .icon-close{display:block}
       el.classList.add("is-visible");
     });
   }
+
+  /* ---------- Carruseles de la portada ---------- */
+  var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-carousel]").forEach(function (car) {
+    var track = car.querySelector(".carousel__track");
+    if (!track) return;
+    var prev = car.querySelector(".carousel__arrow--prev");
+    var next = car.querySelector(".carousel__arrow--next");
+
+    function stepSize() {
+      var first = track.children[0];
+      if (!first) return Math.round(track.clientWidth * 0.85);
+      var st = getComputedStyle(track);
+      var gap = parseFloat(st.columnGap || st.gap) || 16;
+      return Math.round(first.getBoundingClientRect().width + gap);
+    }
+    function update() {
+      var scrollable = track.scrollWidth - track.clientWidth > 2;
+      car.classList.toggle("is-scrollable", scrollable);
+      if (prev) prev.disabled = !scrollable || track.scrollLeft <= 1;
+      if (next) next.disabled = !scrollable || track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+    }
+    function go(dir) {
+      track.scrollBy({ left: dir * stepSize(), behavior: prefersReduced ? "auto" : "smooth" });
+    }
+    if (prev) prev.addEventListener("click", function () { go(-1); });
+    if (next) next.addEventListener("click", function () { go(1); });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    // recalcular cuando las imágenes carguen (cambia el ancho del contenido)
+    track.querySelectorAll("img").forEach(function (img) {
+      if (!img.complete) img.addEventListener("load", update, { once: true });
+    });
+    update();
+  });
 })();
 </script>
 </body>
